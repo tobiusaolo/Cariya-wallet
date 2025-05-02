@@ -1,0 +1,5 @@
+fastapi
+firebase_admin
+pandas
+pydantic
+uvicorn
