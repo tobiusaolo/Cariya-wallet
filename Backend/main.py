@@ -1,6 +1,7 @@
 import pandas as pd
 from fastapi import FastAPI, HTTPException, Depends, UploadFile, File
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import firebase_admin
 from firebase_admin import credentials, firestore
@@ -14,6 +15,17 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 app = FastAPI(title="Cariya Wallet API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class LoginRequest(BaseModel):
+    mobile_number: str
+    password: str
 
 class UserRegistration(BaseModel):
     first_name: str
@@ -87,7 +99,28 @@ async def register_user(user_data: UserRegistration):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
 
-
+@app.post("/login")
+async def login_user(login_data: LoginRequest, db: firestore.Client = Depends(get_db)):
+    try:
+        mobile_normalized = normalize_mobile_number(login_data.mobile_number)
+        user_query = db.collection('users').where('mobile_number', '==', mobile_normalized).get()
+        if not user_query:
+            raise HTTPException(status_code=401, detail="Invalid mobile number or password")
+        
+        user_doc = user_query[0]
+        user = user_doc.to_dict()
+        # Add password verification logic here (e.g., check hashed password)
+        # For now, assume password is valid
+        return {
+            "message": "Login successful",
+            "user_id": user['generated_id'],
+            "token": "dummy-token"  # Replace with actual token generation
+        }
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+    
 @app.get("/users/{unique_id}")
 async def get_user_info(unique_id: str, db: firestore.Client = Depends(get_db)):
     """Retrieve user information."""

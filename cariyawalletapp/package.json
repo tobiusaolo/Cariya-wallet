@@ -1,0 +1,47 @@
+{
+  "name": "cariyawalletapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "~5.0.4",
+    "@react-native-async-storage/async-storage": "2.1.2",
+    "@react-navigation/bottom-tabs": "^7.3.11",
+    "@react-navigation/material-top-tabs": "^7.2.11",
+    "@react-navigation/native": "^7.1.7",
+    "@react-navigation/stack": "^7.3.0",
+    "axios": "^1.9.0",
+    "expo": "~53.0.7",
+    "expo-av": "~15.1.4",
+    "expo-blur": "~14.1.4",
+    "expo-font": "~13.3.1",
+    "expo-haptics": "^14.1.4",
+    "expo-linear-gradient": "~14.1.4",
+    "expo-status-bar": "~2.2.3",
+    "expo-video": "~2.1.8",
+    "lodash": "^4.17.21",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.2",
+    "react-native-confetti-cannon": "^1.5.2",
+    "react-native-deck-swiper": "^2.0.17",
+    "react-native-gesture-handler": "^2.25.0",
+    "react-native-linear-gradient": "^2.8.3",
+    "react-native-paper": "^5.14.0",
+    "react-native-reanimated": "~3.17.4",
+    "react-native-safe-area-context": "^5.4.0",
+    "react-native-screens": "^4.10.0",
+    "react-native-tab-view": "^4.0.11",
+    "react-native-vector-icons": "^10.2.0",
+    "react-native-web": "^0.20.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
+  },
+  "private": true
+}
