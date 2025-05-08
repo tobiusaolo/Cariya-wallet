@@ -66,16 +66,6 @@ npm start
 
 ---
 
-
-## 📁 Open Source Strategy
-
-Planned to open-source the following components:
-- Backend logic for scoring, curated datasets savings partterns and donor-matching
-- CLI utilities for batch processing
-- Public API definitions (OpenAPI schema)
-
-Sensitive components such as user databases and identifiers will remain private. Suggested license: **Apache 2.0**, for balance between permissiveness and contribution governance.
-
 ---
 
 ## 📌 Next Steps
@@ -86,10 +76,6 @@ Sensitive components such as user databases and identifiers will remain private.
 - [ ] Finalize Docker deployment files
 
 ---
-
-## 📄 License
-
-[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
 
 ---
 
